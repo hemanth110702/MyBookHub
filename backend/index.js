@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { Book } from "./models/bookModel.js";
 import booksRoute from "./routes/booksRoute.js";
 import userRoute from "./routes/userRoute.js";
+import { errorHandler } from "./middleware/error-handler.js";
 
 const app = express();
 dotenv.config();
@@ -13,8 +14,8 @@ mongoose
   .connect(process.env.mongoDbURL)
   .then(() => {
     console.log("Connected to MonogoDB");
-    const port = process.env.port || 3000;
-    app.listen(port, () => console.log("Listening on port " + port));
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log("Server is listening on port " + port));
   })
   .catch((error) => {
     console.log(error);
@@ -41,3 +42,5 @@ app.get("/", async (req, res) => {
 
 app.use("/books", booksRoute);
 app.use("/user", userRoute);
+
+app.use(errorHandler);
