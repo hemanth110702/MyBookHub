@@ -1,17 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import { PORT, mongoDbURL } from "./config.js";
+import dotenv from "dotenv";
 import { Book } from "./models/bookModel.js";
 import booksRoute from "./routes/booksRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 const app = express();
+dotenv.config();
 
 mongoose
-  .connect(mongoDbURL)
+  .connect(process.env.mongoDbURL)
   .then(() => {
     console.log("Connected to MonogoDB");
-    app.listen(PORT, () => console.log("Listening on port " + PORT));
+    const port = process.env.port || 3000;
+    app.listen(port, () => console.log("Listening on port " + port));
   })
   .catch((error) => {
     console.log(error);
@@ -37,3 +40,4 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/books", booksRoute);
+app.use("/user", userRoute);
