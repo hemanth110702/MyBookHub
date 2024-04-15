@@ -4,6 +4,9 @@ const authorScheme = mongoose.Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
+  bio: { type: String, required: true },
+  tags: [String],
+  coverImage: String, // base64 or azure
   likedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
   favBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],

@@ -12,6 +12,7 @@ const bookSchema = mongoose.Schema({
   ],
   description: { type: String, required: true },
   tags: [String],
+  coverImage: String, // base64 or azure
   creationDate: { type: Date, default: Date.now },
   updatedDate: { type: Date, default: Date.now },
   visibility: {

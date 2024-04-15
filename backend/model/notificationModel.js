@@ -13,6 +13,7 @@ const notificationScheme = mongoose.Schema({
   },
   type: { type: String, required: true },
   message: { type: String, required: true },
+  viewed: { type: Boolean, default: false },
   timestamp: { type: String, default: Date.now },
 });
 
