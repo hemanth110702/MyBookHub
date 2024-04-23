@@ -1,8 +1,14 @@
+import Nav from "./components/Nav"
+import Search from "./components/Search"
+import Explore from "./components/Explore"
+
 function App() {
   
   return (
     <>
-      <h1>App</h1>
+      <Nav />
+      <Search />
+      <Explore />
     </>
   )
 }

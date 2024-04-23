@@ -7,23 +7,22 @@ const bookSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Author",
       required: true,
-      unique: true,
     },
   ],
   description: { type: String, required: true },
-  tags: [String],
+  tags: [{ type: String, required: true }],
   coverImage: String, // base64 or azure
-  creationDate: { type: Date, default: Date.now },
-  updatedDate: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
   visibility: {
     type: String,
-    enum: ["public", "private", "restricted"],
+    enum: ["public", "private"],
     default: "public",
     required: true,
   },
   allowedViewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
   likes: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Author", unique: true },
+    { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
   ],
   comments: [
     {
