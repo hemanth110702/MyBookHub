@@ -11,19 +11,20 @@ const bookSchema = mongoose.Schema({
   ],
   description: { type: String, required: true },
   tags: [{ type: String, required: true }],
-  coverImage: String, // base64 or azure
+  coverImage: {
+    type: String,
+    default:
+      "https://asset.cloudinary.com/doosiuwwd/612eb7565a6f642869a4f9ba29d67672",
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   visibility: {
     type: String,
     enum: ["public", "private"],
     default: "public",
-    required: true,
   },
   allowedViewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
-  likes: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
-  ],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
   comments: [
     {
       author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
