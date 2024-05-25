@@ -4,40 +4,32 @@ const bookSchema = mongoose.Schema({
   title: { type: String, required: true },
   authors: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Author",
+      type: String,
       required: true,
+      default: []
     },
   ],
   description: { type: String, required: true },
-  tags: [{ type: String, required: true }],
+  genres: [{ type: String, required: true, default: [] }],
   coverImage: {
     type: String,
-    default:
-      "https://asset.cloudinary.com/doosiuwwd/612eb7565a6f642869a4f9ba29d67672",
+    required: true,
   },
+  bookLink: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   visibility: {
     type: String,
-    enum: ["public", "private"],
+    enum: ["public", "private", "restricted"],
     default: "public",
   },
-  allowedViewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
-  comments: [
-    {
-      author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
-      content: String,
-      createdAt: { type: Date, default: Date.now },
-    },
-  ],
-  bookFollowers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
+  allowedViewers: [{ type: String, ref: "Author", default: [] }],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
+  bookComments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment", default: [] }],
+  bookFollowers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
   license: String,
   fullBookLink: String,
-  bookUpdates: [
-    { message: { type: String }, timestamp: { type: Date, default: Date.now } },
-  ],
+  bookActivity: [{ type: mongoose.Schema.Types.ObjectId, ref: "BookActivity", default: [] }],
 });
 
 module.exports = mongoose.model("Book", bookSchema);

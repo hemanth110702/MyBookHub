@@ -1,3 +1,4 @@
+const { ref } = require("joi");
 const mongoose = require("mongoose");
 
 const authorScheme = mongoose.Schema({
@@ -5,15 +6,17 @@ const authorScheme = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   bio: { type: String, required: true },
-  coverImage: String, // base64 or azure
-  likedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
-  favBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
-  following: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
-  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author" }],
-  yourComments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  profilePhoto: { type: String, require: true },
+  authorBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
+  likedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
+  staredBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
+  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
+  yourComments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment", default: [] }],
   notifications: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Notification" },
+    { type: mongoose.Schema.Types.ObjectId, ref: "Notification", default: [] },
   ],
+  authorActivity: [{ type: mongoose.Schema.Types.ObjectId, ref: "AuthorActivity", default: [] }]
 });
 
 module.exports = mongoose.model("Author", authorScheme);

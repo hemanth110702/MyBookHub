@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search = () => {
+const SearchBox = () => {
   return (
     <div className='bg-orange-800 flex justify-center'  >
       <input type="search" placeholder='search'className='bg-yellow-400 p-2' />
@@ -8,4 +8,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchBox

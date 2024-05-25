@@ -17,6 +17,21 @@ const createAuthor = async (req, res) => {
   }
 };
 
+const searchAuthors = async (req, res) => {
+  const { query } = req.query;
+  try {
+    const results = await Author.find({
+      username: { $regex: query, $options: "i" },
+    })
+      .limit(5)
+      .select("username");
+    return res.status(200).send(results);
+  } catch (err) {
+    console.error("Error Searching: ", err);
+    return res.status(500).send("Internal server error");
+  }
+};
+
 function validateAuthor(body) {
   const joiSchema = Joi.object({
     name: Joi.string().min(3).max(65).required(),
@@ -28,4 +43,4 @@ function validateAuthor(body) {
   return joiSchema.validate(body);
 }
 
-module.exports = { createAuthor };
+module.exports = { createAuthor, searchAuthors };

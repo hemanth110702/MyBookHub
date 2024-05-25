@@ -1,16 +1,16 @@
-import Nav from "./components/Nav"
-import Search from "./components/Search"
-import Explore from "./components/Explore"
+import Nav from "./components/Nav";
+import SearchBox from "./components/SearchBox";
+import CreateBook from "./pages/CreateBook";
+import Explore from "./pages/Explore";
 
 function App() {
-  
   return (
     <>
       <Nav />
-      <Search />
-      <Explore />
+      <SearchBox />
+      <CreateBook />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
