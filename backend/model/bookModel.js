@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
-  title: { type: String, required: true },
+  title: { type: String,unique: true, required: true },
   authors: [
     {
       type: String,
@@ -24,11 +24,9 @@ const bookSchema = mongoose.Schema({
     default: "public",
   },
   allowedViewers: [{ type: String, ref: "Author", default: [] }],
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
+  starred: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
   bookComments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment", default: [] }],
-  bookFollowers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
   license: String,
-  fullBookLink: String,
   bookActivity: [{ type: mongoose.Schema.Types.ObjectId, ref: "BookActivity", default: [] }],
 });
 

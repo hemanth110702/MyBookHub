@@ -1,6 +1,10 @@
 const Author = require("../model/authorModel");
 const Joi = require("joi");
 
+const getTopAuthors = async(req, res) => {
+  
+}
+
 const createAuthor = async (req, res) => {
   const { error: JoiError } = validateAuthor(req.body);
   if (JoiError) return res.status(400).send(JoiError.details[0].message);

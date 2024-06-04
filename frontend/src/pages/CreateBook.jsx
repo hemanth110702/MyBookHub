@@ -12,7 +12,7 @@ import apiClient from "../services/apiClient";
 const CreateBook = () => {
   const [coverImage, setCoverImage] = useState(false);
   const { authorList } = useAuthorStore();
-  const { genreList, setError } = useGenreStore();
+  const { genreList, setError: setGenreListError } = useGenreStore();
   const { avList } = useAvStore();
 
   const handleImageChange = (e) => {
@@ -28,7 +28,7 @@ const CreateBook = () => {
     e.preventDefault();
 
     if (genreList.length == 0) {
-      setError("Add atleast one genre");
+      setGenreListError("Add atleast one genre");
     } else {
       const formData = new FormData(e.currentTarget);
       const title = formData.get("title");

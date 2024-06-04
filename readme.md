@@ -1,7 +1,9 @@
-SORTED IN ORDER TASKS
-
-
-1) divide the components in the createBook and join the same functionalities
+SORTED IN ORDER TASKS 
+0) 
+- book display page, then onclick bookdisplay 
+- then add view counts to the book
+- top books (based on likes), top authors (based on followers), book display, linking books to book display then onclick book add views in db
+1) Home page, explore page
 2) add agree terms and conditions field ( check box, filed in book, later display terms when hover)
 3) include violations field in authors model
 4) check for plag before adding the book - bookName, description ,bookLink, lic,...
@@ -23,6 +25,26 @@ SORTED IN ORDER TASKS
 18) add read/not read feature also
 19) add tagging field like @ when author tags a book this msg should also be in that books activity
 20) search author based on their username, like github/hemanth110702
+21) also book http should be like, 
+22) Navbar : Home(recently added, Top Books, Top Authors carosule), explore(search and discover books and author), Notifications, MybookShelf(createBook, favBooks, likedBooks), profile, messages, requests, settings
+23) Book repo - created, starred, liked
+24) make author username unique, title uniqe when creation show these errors also
+24) present home - top based on likes, later based on (views, stared, and likes)
+25) try to implement reccommendation system
+26) Later :
+
+        Top Books: Consider displaying top books based on metrics such as the number of likes, average rating, or recent activity (e.g., most commented on or most viewed). You can calculate these metrics periodically and update the list accordingly.
+
+        Top Authors: Showcase authors with the highest number of followers to highlight influential figures within the community. This can provide users with insights into popular authors and encourage them to explore their work further.
+
+        Book Recommendations: Utilize user data and preferences to generate personalized book recommendations. This can involve analyzing users' reading history, favorite genres, and interactions with the platform to suggest relevant books they may enjoy.
+
+        Recently Added Books: Display recently added books to keep users informed about the latest additions to your platform. This can help users discover new releases and stay up-to-date with fresh content.
+
+        Explore Page: Offer an explore page where users can search for authors, books, genres, or specific topics of interest. Implement search functionality with filters and sorting options to enhance the discoverability of content.
+27) add chat or discussion based on which suits better for this project
+28) only allow numbers and letter for book title in book creation
+
 --------------------------------------------------------------
 Present :
 

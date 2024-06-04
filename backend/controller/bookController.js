@@ -16,12 +16,47 @@ const getAllBooks = async (req, res) => {
   }
 };
 
-const getBook = async (req, res) => {
+const getRecentBooks = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id))
-      return res.status(404).send("Book ID is Invalid");
-    const book = await Book.findById(id);
+    const books = await Book.find().sort({ createdAt: -1 }).limit(10);
+    return res.status(200).send(books);
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send(
+        "Oops! Something went wrong on our end. We're working to fix it. Please try again later."
+      );
+  }
+};
+
+const getTopBooks = async (req, res) => {
+  try {
+    const books = await Book.aggregate([
+      {
+        $addFields: {
+          starredCount: { $size: "$starred" }
+        }
+      },
+      {
+        $sort: { starredCount: -1 }
+      },
+      {
+        $limit: 10
+      }
+    ]);
+    return res.status(200).send(books);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Oops! Something went wrong on our end. We're working to fix it. Please try again later.")
+  }
+}
+
+const getBook = async (req, res) => {
+  const { title: bookTitle } = req.params;
+  let title = bookTitle.split('_').join(' ');
+  try {
+    const book = await Book.findOne({ title });
     if (!book) return res.status(404).send("Book not found");
     return res.status(200).send(book);
   } catch (err) {
@@ -121,4 +156,4 @@ function bookValidation(body) {
   return joiSchema.validate(body);
 }
 
-module.exports = { createBook, getBook, getAllBooks, updateBook, deleteBook };
+module.exports = { createBook, getBook, getAllBooks, getTopBooks, getRecentBooks, updateBook, deleteBook };

@@ -3,8 +3,12 @@ import { bookGenres } from "../../static/bookGenres";
 import { useGenreStore } from "../../store/createbook-store";
 
 const GenreSelector = () => {
-  const { genreList, addToGenreList, removeFromGenreList, error } =
-    useGenreStore();
+  const {
+    genreList,
+    addToGenreList,
+    removeFromGenreList,
+    error: genreListError,
+  } = useGenreStore();
   const [genreSearchQuery, setGenreSearchQuery] = useState("");
   const [genreSearchResults, setGenreSearchResults] = useState([]);
 
@@ -43,7 +47,7 @@ const GenreSelector = () => {
         onChange={handleGenreChange}
         placeholder="select genres"
       />
-      {error && <div>{error}</div>}
+      {genreListError && <div>{genreListError}</div>}
       <ul className="bg-blue-700 w-max">
         {genreSearchQuery &&
           genreSearchResults &&

@@ -1,4 +1,3 @@
-const { ref } = require("joi");
 const mongoose = require("mongoose");
 
 const authorScheme = mongoose.Schema({
@@ -6,10 +5,10 @@ const authorScheme = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   bio: { type: String, required: true },
-  profilePhoto: { type: String, require: true },
+  profilePhoto: { type: String, required: true },
+  favGenre: [{ type: String, required: true, default: [] }],
   authorBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
-  likedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
-  staredBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
+  starredBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Author", default: [] }],
   yourComments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment", default: [] }],
