@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import { useRecentBooks } from "../../store/homebook-store";
+import { Link } from "react-router-dom";
 
 const RecentlyAdded = () => {
   const {
@@ -35,7 +36,9 @@ const RecentlyAdded = () => {
         recentBooks.map((book, index) => (
           <div key={index}>
             <p>
-              {index + 1}.{book.title}
+              <Link to={`/decider/${book.title.replace(/ /g, "_")}`}>
+                {index + 1}.{book.title}
+              </Link>
             </p>
           </div>
         ))}

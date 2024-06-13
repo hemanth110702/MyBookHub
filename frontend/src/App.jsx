@@ -4,15 +4,19 @@ import BookDisplay from "./pages/BookDisplay";
 import CreateBook from "./pages/CreateBook";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Nav />
       <SearchBox />
-      {/* <CreateBook /> */}
-      {/* <Home /> */}
-      <BookDisplay />
+      <Routes>
+        <Route path="/decider" element={<Home />} />
+        <Route path="/decider/explore" element={<Explore />} />
+        <Route path="/decider/:bookname" element={<BookDisplay />} />
+        <Route path="/decider/createbook/" element={<CreateBook />} />
+      </Routes>
     </>
   );
 }

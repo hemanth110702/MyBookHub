@@ -1,4 +1,3 @@
-import React from 'react'
 import RecentlyAdded from '../components/home/RecentlyAdded'
 import TopBooks from '../components/home/TopBooks'
 import TopAuthors from '../components/home/TopAuthors'

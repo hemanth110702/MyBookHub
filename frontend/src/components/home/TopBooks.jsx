@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import { useTopBooks } from "../../store/homebook-store";
+import {Link} from 'react-router-dom';
 
 const TopBooks = () => {
   const {
@@ -22,11 +23,20 @@ const TopBooks = () => {
   useEffect(() => {
     getTopBooks();
   }, []);
-  return <div>
-    <p>Top Books</p>
-    {topBooksError && <div>{topBooksError}</div>}
-    {topBooks && topBooks.map((book, index)=>(<div key={index}>{book.title}</div>))}
-  </div>;
+  return (
+    <div>
+      <p>Top Books</p>
+      {topBooksError && <div>{topBooksError}</div>}
+      {topBooks &&
+        topBooks.map((book, index) => (
+          <div key={index}>
+            <Link to={`/decider/${book.title.replace(/ /g, "_")}`}>
+              {book.title}
+            </Link>
+          </div>
+        ))}
+    </div>
+  );
 };
 
 export default TopBooks;

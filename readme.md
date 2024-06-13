@@ -1,6 +1,5 @@
 SORTED IN ORDER TASKS 
 0) 
-- book display page, then onclick bookdisplay 
 - then add view counts to the book
 - top books (based on likes), top authors (based on followers), book display, linking books to book display then onclick book add views in db
 1) Home page, explore page
@@ -44,6 +43,7 @@ SORTED IN ORDER TASKS
         Explore Page: Offer an explore page where users can search for authors, books, genres, or specific topics of interest. Implement search functionality with filters and sorting options to enhance the discoverability of content.
 27) add chat or discussion based on which suits better for this project
 28) only allow numbers and letter for book title in book creation
+29) like git hub search functionality in your repos and also to search other repos
 
 --------------------------------------------------------------
 Present :
