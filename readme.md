@@ -1,7 +1,5 @@
 SORTED IN ORDER TASKS 
-0) 
-- then add view counts to the book
-- top books (based on likes), top authors (based on followers), book display, linking books to book display then onclick book add views in db
+0) - top books (based on likes), top authors (based on followers), book display, linking books to book display then onclick book add views in db
 1) Home page, explore page
 2) add agree terms and conditions field ( check box, filed in book, later display terms when hover)
 3) include violations field in authors model

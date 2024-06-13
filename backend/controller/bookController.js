@@ -53,11 +53,15 @@ const getTopBooks = async (req, res) => {
 }
 
 const getBook = async (req, res) => {
-  const { title: bookTitle } = req.params;
+  const { title: bookTitle, username } = req.params;
   let title = bookTitle.split('_').join(' ');
   try {
     const book = await Book.findOne({ title });
     if (!book) return res.status(404).send("Book not found");
+    if(!book.views.includes(username)){
+      book.views.push(username);
+      await book.save();
+    }
     return res.status(200).send(book);
   } catch (err) {
     console.log(err);

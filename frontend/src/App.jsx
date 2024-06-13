@@ -12,10 +12,10 @@ function App() {
       <Nav />
       <SearchBox />
       <Routes>
-        <Route path="/decider" element={<Home />} />
-        <Route path="/decider/explore" element={<Explore />} />
-        <Route path="/decider/:bookname" element={<BookDisplay />} />
-        <Route path="/decider/createbook/" element={<CreateBook />} />
+        <Route path="/:username" element={<Home />} />
+        <Route path="/:username/explore" element={<Explore />} />
+        <Route path="/:username/:bookname" element={<BookDisplay />} />
+        <Route path="/:username/createbook/" element={<CreateBook />} />
       </Routes>
     </>
   );
