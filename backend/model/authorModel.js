@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const authorScheme = mongoose.Schema({
   name: { type: String, required: true },
-  username: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true, match: /^[a-zA-Z0-9_]{5,15}$/ },
   email: { type: String, required: true, unique: true },
   bio: { type: String, required: true },
   profilePhoto: { type: String, required: true },

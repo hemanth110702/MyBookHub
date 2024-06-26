@@ -1,31 +1,32 @@
 SORTED IN ORDER TASKS 
-0) - top books (based on likes), top authors (based on followers), book display, linking books to book display then onclick book add views in db
+
+00) validate username, email
+01) login, register ,Authorization - check plag for username
 1) Home page, explore page
 2) add agree terms and conditions field ( check box, filed in book, later display terms when hover)
 3) include violations field in authors model
 4) check for plag before adding the book - bookName, description ,bookLink, lic,...
 5) home page - search functionality, bookDisplay
 6) Book Viewing - discussionsm, liking, favs, ...
-7) Authorization - login, signup
-8) authors name should appear bydefault by author
-9) Book request model : (or simply show like contributions)
+7) authors name should appear bydefault by author
+8) Book request model : (or simply show like contributions)
     if a book has multiple authors then each author will be sent a request, if can add or reject, if added then the book will be added to his authors booklist and also his  book, if rejected it will not add his name in this book and that authors book 
     later we can also update the authors list, if they rejects unfortunately
-10) comments - discussions
-11) following, liking, favourites, .....
-12) keep active search block genres and authors when is on active
-13) in allowed viewers must not get the creating author
-14) allow users to write any genre if not found in the list
-15) onclick/sideclick esc button remove drop dwon and also remove the text in the input field
-16) create what to display when error comes
-17) add chat feature using web sockets
-18) add read/not read feature also
-19) add tagging field like @ when author tags a book this msg should also be in that books activity
-20) search author based on their username, like github/hemanth110702
-21) also book http should be like, 
-22) Navbar : Home(recently added, Top Books, Top Authors carosule), explore(search and discover books and author), Notifications, MybookShelf(createBook, favBooks, likedBooks), profile, messages, requests, settings
-23) Book repo - created, starred, liked
-24) make author username unique, title uniqe when creation show these errors also
+9) comments - discussions
+10) following, liking, favourites, .....
+11) keep active search block genres and authors when is on active
+12) in allowed viewers must not get the creating author
+13) allow users to write any genre if not found in the list
+14) onclick/sideclick esc button remove drop dwon and also remove the text in the input field
+15) create what to display when error comes
+16) add chat feature (Discussion) using web sockets
+17) add read/not read feature also
+18) add tagging field like @ when author tags a book this msg should also be in that books activity
+19) search author based on their username, like github/hemanth110702
+20) also book http should be like, 
+21) Navbar : Home(recently added, Top Books, Top Authors carosule), explore(search and discover books and author), Notifications, MybookShelf(createBook, favBooks, likedBooks), profile, messages, requests, settings
+22) Book repo - created, starred, liked
+23) make author username unique, title uniqe when creation show these errors also
 24) present home - top based on likes, later based on (views, stared, and likes)
 25) try to implement reccommendation system
 26) Later :
@@ -42,6 +43,7 @@ SORTED IN ORDER TASKS
 27) add chat or discussion based on which suits better for this project
 28) only allow numbers and letter for book title in book creation
 29) like git hub search functionality in your repos and also to search other repos
+30) top books (based on likes), top authors (based on followers)
 
 --------------------------------------------------------------
 Present :

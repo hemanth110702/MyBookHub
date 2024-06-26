@@ -1,8 +1,8 @@
 const Author = require("../model/authorModel");
 const Joi = require("joi");
 
-const getTopAuthors = async(req, res) => {
-  
+const getTopAuthors = async (req, res) => {
+
 }
 
 const createAuthor = async (req, res) => {
@@ -36,6 +36,22 @@ const searchAuthors = async (req, res) => {
   }
 };
 
+const checkUsername = async (req, res) => {
+  const { username } = req.query;
+
+  if (!/^[a-zA-Z0-9_]{5,15}$/.test(username)) {
+    return res.json({ available: false, message: "Invalid Username" });
+  }
+
+  const validateUsername = await Author.findOne({ username });
+  if (validateUsername) {
+    return res.json({ available: false, message: "Username already taken" });
+  } else {
+    return res.json({ available: true, message: "Username available" });
+  }
+
+}
+
 function validateAuthor(body) {
   const joiSchema = Joi.object({
     name: Joi.string().min(3).max(65).required(),
@@ -47,4 +63,4 @@ function validateAuthor(body) {
   return joiSchema.validate(body);
 }
 
-module.exports = { createAuthor, searchAuthors };
+module.exports = { createAuthor, searchAuthors, checkUsername };
