@@ -1,6 +1,6 @@
 SORTED IN ORDER TASKS 
 
-00) validate username, email
+00) email
 01) login, register ,Authorization - check plag for username
 1) Home page, explore page
 2) add agree terms and conditions field ( check box, filed in book, later display terms when hover)

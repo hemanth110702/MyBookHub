@@ -12,7 +12,7 @@ const TopBooks = () => {
   } = useTopBooks();
   const getTopBooks = async () => {
     try {
-      const topB = await apiClient.get("/api/books/topbooks");
+      const topB = await apiClient.get("/api/books/top-books");
       addToTopBooks(topB.data);
     } catch (err) {
       console.log(err);

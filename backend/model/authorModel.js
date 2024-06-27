@@ -6,6 +6,8 @@ const authorScheme = mongoose.Schema({
   email: { type: String, required: true, unique: true },
   bio: { type: String, required: true },
   profilePhoto: { type: String, required: true },
+  verified: {type: Boolean},
+  password: {type: String, required: true},
   favGenre: [{ type: String, required: true, default: [] }],
   authorBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],
   starredBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book", default: [] }],

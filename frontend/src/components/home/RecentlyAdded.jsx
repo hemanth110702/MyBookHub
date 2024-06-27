@@ -13,7 +13,7 @@ const RecentlyAdded = () => {
 
   const findRecentBooks = async () => {
     try {
-      const res = await apiClient.get("/api/books/recentbooks");
+      const res = await apiClient.get("/api/books/recent-books");
       addToRecentBooks(res.data);
     } catch (err) {
       console.log("Error finding books : ", err);
