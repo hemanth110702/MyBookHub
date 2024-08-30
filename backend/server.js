@@ -2,16 +2,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const bookRoute = require("./Routes/bookRoutes");
-const authorRoute = require("./Routes/authorRoutes");
-const registerRoute = require("./Routes/registerRoutes");
+const checkEmailRoutes = require("./Routes/checkEmailRoutes");
+const bookRoutes = require("./Routes/bookRoutes");
+const authorRoutes = require("./Routes/authorRoutes");
+const userRoutes = require("./Routes/userRoutes");
 const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/books", bookRoute);
-app.use("/api/authors", authorRoute);
-app.use("/api/register", registerRoute);
+app.use("/api/check-email", checkEmailRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/authors", authorRoutes);
+app.use("/api/users", userRoutes);
+
 /* app.use("/notification");
 app.use("/comment"); */
 

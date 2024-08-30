@@ -1,7 +1,18 @@
 SORTED IN ORDER TASKS 
 
+present :
+          store userdata to local storage
+          add login button nav bar
 00) email
 01) login, register ,Authorization - check plag for username
+if unable to keep username when googleoauth then need to remove required for username and also in register page
+also add forgot password feature
+also how to sent authorized req to backend from frontend
+also store user in local storage like in gamestash and pocketnotes 
+register - already registered tries to register again, check if user registered already
+forgot password feature later
+displaying of errors correctly from backend in login/register
+also think about the route when user logged in
 1) Home page, explore page
 2) add agree terms and conditions field ( check box, filed in book, later display terms when hover)
 3) include violations field in authors model
@@ -44,6 +55,7 @@ SORTED IN ORDER TASKS
 28) only allow numbers and letter for book title in book creation
 29) like git hub search functionality in your repos and also to search other repos
 30) top books (based on likes), top authors (based on followers)
+31) keep required for favourite genre in registeration and also in authormodel
 
 --------------------------------------------------------------
 Present :
