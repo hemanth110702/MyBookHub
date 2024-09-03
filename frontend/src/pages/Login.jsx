@@ -1,26 +1,40 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../services/apiClient";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Login = () => {
   const navigate = useNavigate();
+  const login = useAuthStore((state) => state.login);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
     try {
-      await apiClient.post("/api/users/login", { email, password });
+      const response = await apiClient.post("/api/users/login", {
+        email,
+        password,
+      });
+      const data = response.data;
+      login(data);
       navigate("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
         className="mx-auto border-8 flex flex-col items-center w-3/5 mt-2 gap-2"
       >
         <label htmlFor="Email" className="border-2">

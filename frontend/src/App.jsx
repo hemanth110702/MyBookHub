@@ -7,9 +7,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthStore } from "./store/useAuthStore";
+import { useEffect } from "react";
 
 function App() {
-  const user = "";
+  const user = useAuthStore((state) => state.user);
+
   return (
     <>
       <Nav />
@@ -22,7 +25,7 @@ function App() {
         <Route
           path="/register"
           element={user ? <Navigate to="/:username/home" /> : <Register />}
-        /> 
+        />
         <Route path="/:username/home" element={<Home />} />
         <Route path="/:username/explore" element={<Explore />} />
         <Route path="/:username/:bookname" element={<BookDisplay />} />

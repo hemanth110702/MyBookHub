@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../services/apiClient";
+import { useRegisterStore } from "../store/useRegisterStore";
 import { useAuthStore } from "../store/useAuthStore";
 
 const Register = () => {
@@ -13,7 +14,9 @@ const Register = () => {
     setRegisterFeedback,
     usernameFeedback,
     setUsernameFeedback,
-  } = useAuthStore();
+  } = useRegisterStore();
+
+  const login = useAuthStore((state) => state.login);
 
   const [otp, setOtp] = useState("");
   const [isEmailVerified, setIsEmailVerified] = useState(false);
@@ -28,7 +31,6 @@ const Register = () => {
     } else {
       setIsOtpButtonDisabled(false);
     }
-
     return () => clearInterval(timer);
   }, [otpTimer]);
 
@@ -128,11 +130,15 @@ const Register = () => {
       });
 
       try {
-        apiClient.post("/api/users/register", registrationFormData);
+        const data = apiClient.post(
+          "/api/users/register",
+          registrationFormData
+        );
+        login(data);
         navigate("/");
       } catch (err) {
         console.log(err);
-        setRegisterFeedback("Server Busy!!! Please try after some time.")
+        setRegisterFeedback("Server Busy!!! Please try after some time.");
       }
     }
   };

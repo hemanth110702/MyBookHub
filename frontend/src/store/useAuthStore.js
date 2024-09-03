@@ -1,27 +1,16 @@
-import { create } from 'zustand';
+import create from 'zustand';
 
 export const useAuthStore = create((set) => ({
-  registrationFormData: {
-    username: "",
-    email: "",
-    password: "",
+  user: JSON.parse(localStorage.getItem("myBookHubUser")),
+
+  login: (user) => {
+    localStorage.setItem("myBookHubUser", JSON.stringify(user));
+    set({ user });
   },
-  loginFormData: {
-    email: "",
-    password: "",
-  },
-  usernameFeedback: {
-    available: false,
-    feedback: "",
-  },
-  registerFeedback: {
-    error: false,
-    feedback: "",
-  },
-  setRegisterFeedback: (updateFeedback) => set({ registerFeedback: updateFeedback }),
-  setUsernameFeedback: (updatedFeedback) => set({ usernameFeedback: updatedFeedback }),
-  setRegistrationFormData: (newFormData) => set((state) => ({
-    registrationFormData: { ...state.registrationFormData, ...newFormData },
-  })),
-  setLoginFormData: (newFormData) => set({ loginFormData: newFormData })
-}));
+
+  logout: () => {
+    localStorage.removeItem("myBookHubUser");
+    set({ user: null });
+  }
+
+}))

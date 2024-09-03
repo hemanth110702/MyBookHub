@@ -1,14 +1,12 @@
 SORTED IN ORDER TASKS 
 
 present :
-          store userdata to local storage
-          add login button nav bar
 00) email
 01) login, register ,Authorization - check plag for username
 if unable to keep username when googleoauth then need to remove required for username and also in register page
 also add forgot password feature
 also how to sent authorized req to backend from frontend
-also store user in local storage like in gamestash and pocketnotes 
+also store user in local storage like in gamestash and pocketnotes
 register - already registered tries to register again, check if user registered already
 forgot password feature later
 displaying of errors correctly from backend in login/register
