@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
+import ForgotPwd from "./pages/ForgotPwd";
 
 function App() {
   const user = useAuthStore((state) => state.user);
@@ -26,6 +27,7 @@ function App() {
           path="/register"
           element={user ? <Navigate to="/:username/home" /> : <Register />}
         />
+        <Route path="/forgot-password" element={<ForgotPwd />} />
         <Route path="/:username/home" element={<Home />} />
         <Route path="/:username/explore" element={<Explore />} />
         <Route path="/:username/:bookname" element={<BookDisplay />} />

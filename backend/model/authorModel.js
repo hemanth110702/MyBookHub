@@ -7,7 +7,7 @@ const authorScheme = mongoose.Schema({
     maxlength: 50,
     match: /^[a-zA-ZÀ-ÿ .'-]+$/
   },
-  username: { type: String, unique: true, match: /^[a-zA-Z0-9_]{5,15}$/ },
+  username: { type: String, unique: true, match: /^[a-zA-Z0-9_]{5,15}$/, required: true },
   email: { type: String, required: true, unique: true },
   bio: { type: String },
   profilePhoto: { type: String },

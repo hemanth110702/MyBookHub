@@ -58,7 +58,9 @@ const Login = () => {
             className="bg-gray-400"
             required
           />
-          <p>Forgot password</p>
+          <button type="button" onClick={() => navigate("/forgot-password")}>
+            Forgot password
+          </button>
         </label>
         <div className="w-1/5 flex justify-between">
           <button type="submit" className="bg-pink-200">

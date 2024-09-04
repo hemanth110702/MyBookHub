@@ -3,13 +3,21 @@ const crypto = require('crypto');
 const Otp = require('../model/otpModel');
 
 const sendOtp = async (req, res) => {
-  const { email } = req.body;
+  const { email, checkFP } = req.body;
   if (!email)
     return res.status(400).send("Email is required");
 
   const otp = crypto.randomInt(100000, 999999).toString();
 
   try {
+
+    if (checkFP === 1) {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(404).send({ message: "User not registered" });
+      }
+    }
+
     await Otp.findOneAndUpdate(
       { email },
       { otp },

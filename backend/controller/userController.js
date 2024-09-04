@@ -25,6 +25,7 @@ const registerUser = async (req, res) => {
       message: "Account created successfully",
       _id: author.id,
       email: author.email,
+      username: author.username,
       token: generateToken(author._id)
     });
 
@@ -52,6 +53,7 @@ const loginUser = async (req, res) => {
       message: "Login successful",
       _id: author.id,
       email: author.email,
+      username: author.username,
       token: generateToken(author._id)
     });
 
@@ -71,6 +73,29 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' })
 }
 
+const updatePwd = async (req, res) => {
+  const { error } = validateUserData(req.body, 1);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const { email, password } = req.body;
+
+  try {
+    const author = await Author.findOne({ email });
+    if (!author) return res.status(404).send("No user found");
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    author.password = hashedPassword;
+    await author.save();
+
+    return res.status(200).send("Password updated successfully");
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Failed to update password");
+  }
+};
+
 
 function validateUserData(data, isLogin = 0) {
 
@@ -86,9 +111,9 @@ function validateUserData(data, isLogin = 0) {
     password: joiPasswordComplexity().required(),
   });
 
-  if (isLogin) return joiSchemaL.validate(data);
+  if (isLogin == 1) return joiSchemaL.validate(data);
 
   return joiSchemaR.validate(data);
 }
 
-module.exports = { registerUser, loginUser, getMe };
+module.exports = { registerUser, loginUser, getMe, updatePwd };

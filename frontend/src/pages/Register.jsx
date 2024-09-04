@@ -23,6 +23,7 @@ const Register = () => {
   const [otpStatus, setOtpStatus] = useState("");
   const [otpTimer, setOtpTimer] = useState(0);
   const [isOtpButtonDisabled, setIsOtpButtonDisabled] = useState(false);
+  const [pwdErr, setPwdErr] = useState("");
 
   useEffect(() => {
     let timer;
@@ -38,6 +39,7 @@ const Register = () => {
     try {
       await apiClient.post("/api/check-email/send-otp", {
         email: registrationFormData.email,
+        checkFP: 0,
       });
       setOtpStatus("Otp sent to email.");
       setOtpTimer(300);
@@ -104,10 +106,27 @@ const Register = () => {
     }
   };
 
+  const checkPassword = () => {
+    if (registrationFormData.password.length < 8) {
+      setPwdErr("Must be at least 8 characters.");
+    } else if (!/[0-9]/.test(registrationFormData.password)) {
+      setPwdErr("Must include 1 number.");
+    } else if (!/[A-Z]/.test(registrationFormData.password)) {
+      setPwdErr("Must include 1 uppercase letter.");
+    } else if (!/[a-z]/.test(registrationFormData.password)) {
+      setPwdErr("Must include 1 lowercase letter.");
+    } else if (!/[!@#$%^&*]/.test(registrationFormData.password)) {
+      setPwdErr("Must include 1 special character.");
+    } else {
+      setPwdErr("");
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRegistrationFormData({ ...registrationFormData, [name]: value });
     if (name == "username") checkUsername(value);
+    if (name == "password") checkPassword();
   };
 
   const handleRegister = async (e) => {
@@ -216,6 +235,9 @@ const Register = () => {
             required
             autoComplete="current-password"
           />
+          {pwdErr && registrationFormData.password.length > 0 && (
+            <p>{pwdErr}</p>
+          )}
         </label>
         <div className="w-1/5 flex justify-between">
           <button
