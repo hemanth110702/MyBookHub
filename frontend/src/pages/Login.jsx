@@ -23,7 +23,7 @@ const Login = () => {
       });
       const data = response.data;
       login(data);
-      navigate("/");
+      navigate(`/${data.username / home}`);
     } catch (error) {
       console.log(error);
     } finally {

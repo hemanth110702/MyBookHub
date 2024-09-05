@@ -23,6 +23,7 @@ const TopBooks = () => {
   useEffect(() => {
     getTopBooks();
   }, []);
+  
   return (
     <div>
       <p>Top Books</p>

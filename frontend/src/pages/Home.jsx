@@ -1,19 +1,16 @@
-import RecentlyAdded from '../components/home/RecentlyAdded'
-import TopBooks from '../components/home/TopBooks'
-import TopAuthors from '../components/home/TopAuthors'
-import MostViewedBooks from '../components/home/MostViewedBooks'
+import RecentlyAdded from "../components/home/RecentlyAdded";
+import TopBooks from "../components/home/TopBooks";
+import TopAuthors from "../components/home/TopAuthors";
 
 const Home = () => {
   return (
     <>
-    <p>This is Home Page.</p> 
-    <TopBooks /> {/* based on starred */ }
-    <TopAuthors /> {/* based on followers */}
-    <MostViewedBooks /> {/*based on views */}
-    <RecentlyAdded />
-    {/* try book personalized recommendation */}
+      <p>This is Home Page.</p>
+      <TopBooks /> {/* based on starred */}
+      <TopAuthors /> {/* based on followers */}
+      <RecentlyAdded /> {/* recent added books */}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

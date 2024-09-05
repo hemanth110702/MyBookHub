@@ -66,12 +66,9 @@ const ForgotPwd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (pwdErr) return; 
+    if (pwdErr) return;
 
     try {
-
-      console.log("hlo");
-      
       const response = await apiClient.post("/api/users/forgot-password", {
         email,
         password,

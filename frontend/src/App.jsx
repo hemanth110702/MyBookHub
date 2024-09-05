@@ -10,6 +10,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import ForgotPwd from "./pages/ForgotPwd";
+import ErrorPage from "./pages/ErrorPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const user = useAuthStore((state) => state.user);
@@ -21,17 +23,26 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={user ? <Navigate to="/:username/home" /> : <Login />}
+          element={
+            user ? <Navigate to={`/${user?.username}/home`} /> : <Login />
+          }
         />
+
         <Route
           path="/register"
-          element={user ? <Navigate to="/:username/home" /> : <Register />}
+          element={
+            user ? <Navigate to={`/${user?.username}/home`} /> : <Register />
+          }
         />
+
         <Route path="/forgot-password" element={<ForgotPwd />} />
+
         <Route path="/:username/home" element={<Home />} />
         <Route path="/:username/explore" element={<Explore />} />
-        <Route path="/:username/:bookname" element={<BookDisplay />} />
-        <Route path="/:username/createbook/" element={<CreateBook />} />
+        <Route path="/:username/book/:bookname" element={<BookDisplay />} />
+        <Route path="/:username/createbook" element={<CreateBook />} />
+
+        <Route path="*" element={user ? <NotFound /> : <ErrorPage />} />
       </Routes>
     </>
   );

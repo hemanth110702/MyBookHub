@@ -1,16 +1,27 @@
 SORTED IN ORDER TASKS
 
-present :
-also add forgot password feature
+pages final : overview, home, explore, approvals, profile update
+
+- present basic functionality :
+  home page nd some other pages display books as blocks
+  create nav bar like git hub
+  add profile page
+
 also see how to sent authorized req to backend from frontend if required
-also store user in local storage like in gamestash and pocketnotes
-register - already registered tries to register again, check if user registered already
-displaying of errors correctly from backend in login/register
-also think about the route when user logged in
-also check resend otp button
-display basic error messages in form
-in forgot password page, after updating password if success dispaly below it updateed for 5 sec any msg also if fail for 5 sec like that
-1.  Home page, explore page, profile page
+also think about the route when user logged in, after updating username in nav bar
+
+- final late checkup
+  also check resend otp button
+  display basic error messages in form
+  in forgot password page, after updating password if success dispaly below it updateed for 5 sec any msg also if fail for 5 sec like that
+  displaying of errors correctly from backend in login/register
+  add guest account details
+
+- Features :
+
+  home, overview(update profile button in it if the user looks), book-repos, explore
+
+1.  Overview, Repositories, Home page, explore page with search, profile page
 2.  add agree terms and conditions field ( check box, filed in book, later display terms when hover)
 3.  include violations field in authors model
 4.  check for plag before adding the book - bookName, description ,bookLink, lic,...

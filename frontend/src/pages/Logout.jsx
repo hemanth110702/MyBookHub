@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
 
   const handleLogout = () => {
@@ -13,7 +14,7 @@ const Logout = () => {
 
   return (
     <div>
-      <div>username</div>
+      <div>{user?.username}</div>
       <button onClick={handleLogout}>logout</button>
     </div>
   );
